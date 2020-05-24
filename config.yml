@@ -18,22 +18,11 @@ installed_extras:
   - redis
   - tideways
 
-firewall_allowed_tcp_ports:
-  - "22"
-  - "25"
-  - "80"
-  - "81"
-  - "443"
-  - "3306"
-  - "4444"
-  - "8025"
-  - "8080"
-  - "8443"
-  - "8983"
-  - "9200"
-
 php_version: "7.3"
 php_memory_limit: "128M"
+
+post_provision_scripts:
+  - "php {{ drupal_core_path }}/scripts/importdb.php staging"
 
 mysql_packages:
   - mariadb-client

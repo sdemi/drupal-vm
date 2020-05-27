@@ -1,0 +1,5 @@
+- name: Run importdb.php
+  command: "php /var/www/drupalvm/drupal/web/scripts/importdb.php staging"
+  register: output
+
+- debug: msg="{{ output.stdout_lines }}"

@@ -13,16 +13,16 @@ drupal_install_site: false
 
 installed_extras:
   - adminer
-  - mailhog
+# - blackfire
+# - mailhog
   - pimpmylog
   - redis
-  - tideways
+# - tideways
 
 php_version: "7.3"
-php_memory_limit: "128M"
+php_memory_limit: "160M"
 
-post_provision_scripts:
-  - "php {{ drupal_core_path }}/scripts/importdb.php staging"
+post_provision_tasks_dir: "../post-provision.yml"
 
 mysql_packages:
   - mariadb-client

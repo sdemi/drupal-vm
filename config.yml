@@ -12,26 +12,25 @@ drupal_build_composer_project: false
 drupal_install_site: false
 
 installed_extras:
-  - adminer
-  # - blackfire
+    - adminer
+    - blackfire
   # - drupalconsole
   # - drush
   # - elasticsearch
   # - java
-  # - mailhog
+    - mailhog
   # - memcached
   # - newrelic
   # - nodejs
-  - pimpmylog
-  - redis
+    - pimpmylog
+    - redis
   # - ruby
   # - selenium
   # - solr
-  # - tideways
+  # - tideways #xhprof originally
   # - upload-progress
   # - varnish
-  # - xdebug
-  # - xhprof # use `tideways` if you're installing PHP 7+
+    - xdebug
 
 php_version: "7.3"
 php_memory_limit: "160M"

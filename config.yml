@@ -13,11 +13,25 @@ drupal_install_site: false
 
 installed_extras:
   - adminer
-# - blackfire
-# - mailhog
+  # - blackfire
+  # - drupalconsole
+  # - drush
+  # - elasticsearch
+  # - java
+  # - mailhog
+  # - memcached
+  # - newrelic
+  # - nodejs
   - pimpmylog
   - redis
-# - tideways
+  # - ruby
+  # - selenium
+  # - solr
+  # - tideways
+  # - upload-progress
+  # - varnish
+  # - xdebug
+  # - xhprof # use `tideways` if you're installing PHP 7+
 
 php_version: "7.3"
 php_memory_limit: "160M"

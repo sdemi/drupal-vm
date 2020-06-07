@@ -12,7 +12,8 @@ drupal_build_composer_project: false
 drupal_install_site: false
 
 installed_extras:
-    - adminer
+  # - adminer
+    - phpmyadmin
     - blackfire
   # - drupalconsole
   # - drush
@@ -30,7 +31,10 @@ installed_extras:
   # - tideways #xhprof originally
   # - upload-progress
   # - varnish
-    - xdebug
+  # - xdebug
+    - importdb
+
+importdb_database: "poc"
 
 php_version: "7.3"
 php_memory_limit: "160M"
@@ -41,3 +45,22 @@ mysql_packages:
   - mariadb-client
   - mariadb-server
   - python-mysqldb
+
+apache_vhosts:
+  - servername: "{{ drupal_domain }}"
+    serveralias: "www.{{ drupal_domain }}"
+    documentroot: "{{ drupal_core_path }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+  - servername: "phpmyadmin.{{ vagrant_hostname }}"
+    documentroot: "/usr/share/phpmyadmin"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+  - servername: "pimpmylog.{{ vagrant_hostname }}"
+    documentroot: "{{ pimpmylog_install_dir }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+  - servername: "{{ vagrant_ip }}"
+    serveralias: "dashboard.{{ vagrant_hostname }}"
+    documentroot: "{{ dashboard_install_dir }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"

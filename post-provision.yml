@@ -1,5 +1,12 @@
+---
+- name: Include geerlingguy.phpmyadmin
+  include_role:
+    name: geerlingguy.phpmyadmin
+  when: '"phpmyadmin" in installed_extras'
+
 - name: Run importdb.php
-  command: "php /var/www/drupalvm/drupal/web/scripts/importdb.php staging"
+  command: "php {{ drupal_core_path }}/scripts/importdb.php {{ importdb_database }}"
   register: output
+  when: '"importdb" in installed_extras'
 
 - debug: msg="{{ output.stdout_lines }}"
